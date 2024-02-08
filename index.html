@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project: Library</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <dialog id="modalWindow">
+    <form class="addBook-form" action="">
+      <p>
+        <label for="book-title">Title</label>
+        <input class="addBook-input_title" type="text" id="book-title">
+      </p>
+      <p>
+        <label for="book-author">Author</label>
+        <input class="addBook-input_author" type="text" id="book-author">
+      </p>
+      <p>
+        <label for="book-pages">Pages</label>
+        <input class="addBook-input_pages" type="text" id="book-pages">
+      </p>
+
+      <p>
+        <p>Read</p>
+        <label class="switch" for="been-read">
+          
+          <input type="checkbox">
+          <span class="slider round read"></span>
+        </label>
+        
+      </p>
+
+      <div>
+        <button id="addBtn" value="default">Add Book</button>
+        <button value="cancel" formmethod="dialog">Cancel</button>
+      </div>
+      
+    </form>
+  </dialog>
+  <button class="openModal" type="button">Add New Book</button>
+  <section class="container"></section>
+  <script src="./script.js"></script>
+</body>
+</html>

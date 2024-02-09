@@ -5,6 +5,9 @@ const bookTitleInput = modalWindow.querySelector(".addBook-input_title");
 const bookAuthorInput = modalWindow.querySelector(".addBook-input_author");
 const bookPagesInput = modalWindow.querySelector(".addBook-input_pages");
 const addNewBookBtn = modalWindow.querySelector("#addBtn");
+const switchToggle = modalWindow.querySelector(".chxBox");
+
+const myLibrary = [];
 
 openModalWindow.addEventListener("click", () => {
   modalWindow.showModal();
@@ -35,19 +38,25 @@ function clearInput() {
   bookPagesInput.value = "";
 }
 
-const myLibrary = [];
-
-function Book() {
-  //constructor
+function Book(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = false;
 }
 
 function addBookToLibrary() {
-  const newBook = {};
-  newBook.title = bookTitleInput.value;
-  newBook.author = bookAuthorInput.value;
-  newBook.pages = bookPagesInput.value;
+  title = bookTitleInput.value;
+  author = bookAuthorInput.value;
+  pages = bookPagesInput.value;
 
+  const newBook = new Book(title, author, pages);
+  newBook.read = switchToggle.addEventListener("click", (e) => readToggle(e));
   myLibrary.push(newBook);
+}
+
+function readToggle(e) {
+  return e.target.checked ? true : false;
 }
 
 function addBookCard(title, author, pages) {

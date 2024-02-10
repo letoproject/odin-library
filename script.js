@@ -78,3 +78,6 @@ function addBookCard(title, author, pages) {
 }
 
 console.log(myLibrary);
+
+const currentYearSpan = document.querySelector(".current_year");
+currentYearSpan.textContent = new Date().getFullYear();

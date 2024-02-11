@@ -16,21 +16,8 @@ openModalWindow.addEventListener("click", () => {
 addNewBookBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  let title = null;
-  let author = null;
-  let pages = null;
-
   addBookToLibrary();
-  booksContainer.innerHTML = "";
-  myLibrary.forEach((book) => {
-    const index = myLibrary.map((card) => card.title).indexOf(book.title);
-    title = book.title;
-    author = book.author;
-    pages = book.pages;
-    read = book.read;
-    createBookCard(title, author, pages, read, index);
-  });
-
+  createBookCard();
   modalWindow.close();
   clearInput();
 });
@@ -49,7 +36,7 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.changeReadStatus = function (read) {
+Book.prototype.changeReadStatus = function () {
   this.read = !this.read;
 };
 
@@ -68,28 +55,46 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
 }
 
-function createBookCard(title, author, pages, read, index) {
-  const card = document.createElement("div");
-  card.setAttribute("data-id", `${index}`);
-  card.classList.add("book-card");
+function createBookCard() {
+  booksContainer.innerHTML = "";
+  console.log(myLibrary);
 
-  const bookTitle = document.createElement("p");
-  const bookAuthor = document.createElement("p");
-  const bookPages = document.createElement("p");
-  const haveRead = document.createElement("p");
+  myLibrary.forEach((book) => {
+    console.dir("book", book);
+    const card = document.createElement("div");
+    card.classList.add("book-card");
 
-  bookTitle.textContent = title;
-  bookAuthor.textContent = author;
-  bookPages.textContent = pages;
-  haveRead.textContent = read;
+    const index = myLibrary.map((b) => b.title).indexOf(book.title);
+    card.setAttribute("data-id", `${index}`);
 
-  read ? (haveRead.style.color = "green") : (haveRead.style.color = "red");
+    title = book.title;
+    author = book.author;
+    pages = book.pages;
+    read = book.read;
 
-  card.appendChild(bookTitle);
-  card.appendChild(bookAuthor);
-  card.appendChild(bookPages);
-  card.appendChild(haveRead);
-  booksContainer.appendChild(card);
+    const bookTitle = document.createElement("h2");
+    const bookAuthor = document.createElement("p");
+    const bookPages = document.createElement("p");
+
+    bookTitle.textContent = title;
+    bookAuthor.textContent = `by ${author}`;
+    bookPages.textContent = `Pages: ${pages}`;
+
+    const menuBtns = document.createElement("div");
+    const menuBtnSwitch = document.createElement("button");
+    const menuBtnDel = document.createElement("button");
+    menuBtnSwitch.textContent = `${read ? "Read" : "Not read"}`;
+    menuBtnDel.textContent = "Delete";
+    menuBtns.appendChild(menuBtnSwitch);
+    menuBtns.appendChild(menuBtnDel);
+
+    card.appendChild(bookTitle);
+    card.appendChild(bookAuthor);
+    card.appendChild(bookPages);
+    card.appendChild(menuBtns);
+
+    booksContainer.appendChild(card);
+  });
 }
 
 const currentYearSpan = document.querySelector(".current_year");

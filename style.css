@@ -11,11 +11,13 @@ body {
 }
 
 .container {
-  /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
 }
+
 .book-card {
-  width: 100px;
+  width: 300px;
   border: 1px solid red;
 }
 /* / HEADER / */

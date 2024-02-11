@@ -57,7 +57,7 @@ body {
   font-weight: bolder;
   cursor: pointer;
   box-shadow:none;
-  transition: background-color 250ms ease-in-out;
+  transition: background-color 250ms ease;
 }
 
 .addButton:hover {

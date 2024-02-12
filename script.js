@@ -36,8 +36,17 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.changeReadStatus = function () {
+Book.prototype.changeReadStatus = function (e) {
   this.read = !this.read;
+  e.target.textContent = `${this.read ? "Read" : "Not read"}`;
+
+  if (e.target.classList.contains("read")) {
+    e.target.classList.remove("read");
+    e.target.classList.add("not_read");
+  } else {
+    e.target.classList.add("read");
+    e.target.classList.remove("not_read");
+  }
 };
 
 function addBookToLibrary() {
@@ -57,10 +66,8 @@ function addBookToLibrary() {
 
 function createBookCard() {
   booksContainer.innerHTML = "";
-  console.log(myLibrary);
 
   myLibrary.forEach((book) => {
-    console.dir("book", book);
     const card = document.createElement("div");
     card.classList.add("book-card");
 
@@ -81,10 +88,18 @@ function createBookCard() {
     bookPages.textContent = `Pages: ${pages}`;
 
     const menuBtns = document.createElement("div");
+    menuBtns.classList.add("book-card_menu");
+
     const menuBtnSwitch = document.createElement("button");
-    const menuBtnDel = document.createElement("button");
     menuBtnSwitch.textContent = `${read ? "Read" : "Not read"}`;
+    menuBtnSwitch.classList.add("book-card_btnSwitch");
+    menuBtnSwitch.classList.add(`${read ? "read" : "not_read"}`);
+    menuBtnSwitch.addEventListener("click", (e) => book.changeReadStatus(e));
+
+    const menuBtnDel = document.createElement("button");
+    menuBtnDel.classList.add("book-card_btnDel");
     menuBtnDel.textContent = "Delete";
+
     menuBtns.appendChild(menuBtnSwitch);
     menuBtns.appendChild(menuBtnDel);
 

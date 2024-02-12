@@ -55,10 +55,10 @@ function addBookToLibrary() {
   pages = bookPagesInput.value;
   read = switchToggle.checked;
 
-  // if (title === "" || author === "" || pages === "") {
-  //   alert("Inputs can`t be empty");
-  //   return;
-  // }
+  if (title === "" || author === "") {
+    alert("Inputs can`t be empty");
+    return;
+  }
 
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);

@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+h1, h2 {
+  margin: 0;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -11,16 +15,9 @@ body {
   width: 100%;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
 
-.book-card {
-  width: 300px;
-  border: 1px solid red;
-}
+
+
 /* / HEADER / */
 
 .header {
@@ -37,12 +34,54 @@ body {
 /* / MAIN / */
 
 .container {
-  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
 }
 
-/* dialog {
-  
-} */
+
+/* / dialog window/ */
+dialog {
+  padding: 2rem;
+  width: 30%;
+  border: none;
+  border-radius: 1rem;
+}
+
+.dialog_title {
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.dialog_input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  > input {
+    padding: .5rem;
+  }
+}
+
+.dialog_switch {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog_btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dialog_btn {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+/* / add button / */
 
 .addButton {
   display: flex;
@@ -54,12 +93,13 @@ body {
   border: none;
   border-radius: 1rem;
 
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 1rem;
   font-size: 1.5rem;
   font-weight: bolder;
   cursor: pointer;
-  box-shadow:none;
+  box-shadow: none;
   transition: background-color 250ms ease;
 }
 
@@ -78,6 +118,69 @@ body {
   > .addButton_svg {
     transform: scale(1.2);
   }
+}
+
+/* / card / */
+
+.book-card {
+  width: 300px;
+  border: none;
+  border-radius: 8px;
+  background-color: #9696961e;
+  padding: 1rem;
+
+  transition: all 250ms ease;
+}
+
+.book-card:hover {
+box-shadow: 0 4px 16px #ccc;
+background-color: #96969634;;
+}
+
+.book-card_menu {
+  display: flex;
+  justify-content: center;
+  gap:1rem;
+}
+
+.book-card_btn {
+  padding: 1rem;
+  width: 90px;
+  cursor: pointer;
+  border: 1px transparent;
+  border-radius: 8px;
+  background-color: #fff;
+  font-weight: bold;
+  transition: all 250ms ease;
+}
+
+.book-card_btn.read {
+  border: 1px solid rgba(0, 128, 0, 0.363);
+}
+
+.book-card_btn.read:hover {
+  background-color: rgba(0, 128, 0, 0.363);;
+}
+
+.book-card_btn.not_read {
+  border: 1px solid rgba(255, 0, 0, 0.301);
+}
+
+.book-card_btn.not_read:hover {
+  background-color: rgba(255, 0, 0, 0.301);;
+}
+
+.book-card_btn.read:hover,
+.book-card_btn.not_read:hover {
+  color: #fff;
+}
+
+[data-btn="btnDel"] {
+  border: 1px solid gray;
+}
+
+[data-btn="btnDel"]:hover {
+  background-color:rgba(126, 126, 126, 0.363)
 }
 /* / FOOTER / */
 

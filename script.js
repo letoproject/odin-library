@@ -92,13 +92,19 @@ function createBookCard() {
 
     const menuBtnSwitch = document.createElement("button");
     menuBtnSwitch.textContent = `${read ? "Read" : "Not read"}`;
-    menuBtnSwitch.classList.add("book-card_btnSwitch");
+    menuBtnSwitch.classList.add("book-card_btn");
+    menuBtnSwitch.setAttribute("data-btn", "btnSwitch");
     menuBtnSwitch.classList.add(`${read ? "read" : "not_read"}`);
     menuBtnSwitch.addEventListener("click", (e) => book.changeReadStatus(e));
 
     const menuBtnDel = document.createElement("button");
-    menuBtnDel.classList.add("book-card_btnDel");
+    menuBtnDel.classList.add("book-card_btn");
+    menuBtnDel.setAttribute("data-btn", "btnDel");
     menuBtnDel.textContent = "Delete";
+    menuBtnDel.addEventListener("click", () => {
+      myLibrary.splice(index, 1);
+      createBookCard();
+    });
 
     menuBtns.appendChild(menuBtnSwitch);
     menuBtns.appendChild(menuBtnDel);

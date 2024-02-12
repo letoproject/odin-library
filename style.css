@@ -47,6 +47,7 @@ dialog {
   width: 30%;
   border: none;
   border-radius: 1rem;
+  box-shadow: 1px 3px 6px #16161625;
 }
 
 .dialog_title {
@@ -79,6 +80,16 @@ dialog {
 .dialog_btn {
   padding: 1rem;
   cursor: pointer;
+  border: 1px solid;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #16161611;
+  transition: background-color 250ms ease;
+}
+
+.dialog_btn:hover {
+  box-shadow: 1px 3px 6px #16161625;
+  background-color: transparent;
 }
 
 /* / add button / */
@@ -128,7 +139,7 @@ dialog {
   border-radius: 8px;
   background-color: #9696961e;
   padding: 1rem;
-
+  justify-self: center;
   transition: all 250ms ease;
 }
 

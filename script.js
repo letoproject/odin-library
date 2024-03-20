@@ -29,25 +29,27 @@ function clearInput() {
   switchToggle.checked = false;
 }
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-
-Book.prototype.changeReadStatus = function (e) {
-  this.read = !this.read;
-  e.target.textContent = `${this.read ? "Read" : "Not read"}`;
-
-  if (e.target.classList.contains("read")) {
-    e.target.classList.remove("read");
-    e.target.classList.add("not_read");
-  } else {
-    e.target.classList.add("read");
-    e.target.classList.remove("not_read");
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
-};
+
+  changeReadStatus = function (e) {
+    this.read = !this.read;
+    e.target.textContent = `${this.read ? "Read" : "Not read"}`;
+
+    if (e.target.classList.contains("read")) {
+      e.target.classList.remove("read");
+      e.target.classList.add("not_read");
+    } else {
+      e.target.classList.add("read");
+      e.target.classList.remove("not_read");
+    }
+  };
+}
 
 function addBookToLibrary() {
   title = bookTitleInput.value;
